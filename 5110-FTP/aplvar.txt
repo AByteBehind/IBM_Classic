@@ -1,0 +1,102 @@
+Zero page constants/variables used in APL:
+
+Constants
+---------
+104	01FE		Current instruction fetch routine (may be 01FE or 020A)
+1E6	01FE		Normal instruction fetch routine (from ROS)
+1E8	020A		Alternate instruction fetch routine (from RWS)
+
+1C4	0000
+1C6	0000
+
+136	04A4		Set Condition Code 0 and continue
+138	04A8		Set Condition Code 1 and continue
+13A	04AC		Set Condition Code 2 and continue
+13C	04B0		Set Condition Code 3 and continue
+
+13E	04B4		Fixed-point overflow
+
+134	0100		General processor registers (see below)
+124	0108		Floating-point registers (see below)
+126	0188		Same as 124, but with bit 8 set
+
+17C	021A		Fetch operands; format R1,D2(X2,B2)  [RX]
+1AC	021A		ROS fetch
+1A4	0272		RWS fetch
+
+17E	0224		Fetch operands; format FR1,D2(X2,B2)  [RX]
+1AE	0224		ROS fetch
+1A6	0282		RWS fetch
+
+184	022E
+
+186	0292		Fetch operands; format D2(B2)  [RS]
+1B4	0292		ROS fetch
+1A8	02B2		RWS fetch
+
+188	02C2		Fetch operands; format D1(B1)  [SI]
+1DA	02C2		ROS fetch
+1D4	02EC		RWS fetch
+
+18A	02FA		Fetch operands; format D1(L,B1),D2(B2) (RWS/ROS) [SS]
+1DC	02FA		ROS fetch
+1D6	036E		RWS fetch
+
+18C	0328		Fetch operands; format D1(L,B1),D2(B2) (RWS only) [SS]
+1DE	0328		ROS fetch
+1D8	0388		RWS fetch
+
+18E	03A4
+1B6	03A4		ROS
+1AA	03B0		RWS
+
+			Fetch data from 24 bit address space (i.e. from ROS)
+			----------------------------------------------------
+158	04CC		Fetch 8 bytes
+15A	04D0		Fetch 1 byte from next even address
+15C	04DE		Fetch 2 bytes
+15E	04E2		Fetch 4 bytes
+156	0542		Fetch 1 byte (special routine)
+
+164	2970
+166	2A2C
+174	2AE8		Normalize floating point number in R3/R4/R5/R6
+176	2C12		Normalize floating point number in R7/R8/R9/R10
+
+154	0A00		Work area e.g. for multiplication
+
+1EA	2D60		Switch operand fetch routines to ROS
+1EC	2D3C		Switch operand fetch routines to RWS
+
+106	0800		Start of vector table in RWS
+
+1CE	0172		Restart address of /360 emulator
+
+Variables
+---------
+144			Temporary storage
+146			CPU Program Mask Bits (lower nibble)
+194			Temporary storage; used as Old PSW in except. routine
+196			Temporary storage
+19C			Temporary storage
+1EE			Instruction Pointer when executing from RWS
+1E4			0: Execution from ROS
+
+0100-103		R0 - General register 0 (32 bits)
+0110-113		R1
+0120-123		R2
+0130-133		R3
+...			...
+01E0-1E3		R14
+01F0-1F3		R15 - General register 15 (32 bits)
+
+0108			FR0 - Floating-point register 0 (64 bits)
+0118			FR2 - Floating-point register 2 (64 bits)
+0128			FR4 - Floating-point register 4 (64 bits)
+0138			FR6 - Floating-point register 6 (64 bits)
+
+0119-11C		Temporary storage for multiplier
+
+RWS locations used
+------------------
+0800-09FF		Instruction vector table
